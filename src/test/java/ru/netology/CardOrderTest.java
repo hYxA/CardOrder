@@ -54,4 +54,28 @@ public class CardOrderTest {
         String actualText = driver.findElement(By.className("paragraph")).getText();
         String expectedText = "&nbsp; Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
     }
+//
+//    @Test
+//    void shouldGet() {
+//        driver.get("http://localhost:9999");
+//        List<WebElement> textFields = driver.findElements(By.className("input__control"));
+//        textFields.get(0).sendKeys("Сыпунькай");
+//        textFields.get(1).sendKeys("+79012345678");
+//        driver.findElement(By.className("checkbox__box")).click();
+//        driver.findElement(By.tagName("button")).click();
+////        String input = driver.findElement(By.className("paragraph")).getText();
+//        String actualText = driver.findElement(By.className("paragraph")).getText();
+//        String expectedText = "&nbsp; Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+//    }@Test
+//    void shouldEnterTruNameAndPhone() {
+//        driver.get("http://localhost:9999");
+//        List<WebElement> textFields = driver.findElements(By.className("input__control"));
+//        textFields.get(0).sendKeys("Сыпунькай");
+//        textFields.get(1).sendKeys("+79012345678");
+//        driver.findElement(By.className("checkbox__box")).click();
+//        driver.findElement(By.tagName("button")).click();
+////        String input = driver.findElement(By.className("paragraph")).getText();
+//        String actualText = driver.findElement(By.className("paragraph")).getText();
+//        String expectedText = "&nbsp; Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+//    }
 }
