@@ -35,7 +35,8 @@ public class CardOrderTest {
     }
 
     @Test
-    void test() {
+    boolean test() {
         // Your test logic here
+        return true;
     }
 }
