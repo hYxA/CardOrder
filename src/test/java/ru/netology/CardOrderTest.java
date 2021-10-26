@@ -11,28 +11,27 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class CardOrderTest {
     private WebDriver driver;
-    ChromeOptions options = new ChromeOptions();
 
-    options.addArguments("--disable-dev-shm-usage");
-    options.addArguments("--no-sandbox");
-    options.addArguments("--headless");
-    ChromeDriver driver = new ChromeDriver(options);
-
-    WebDriverManager wdm = WebDriverManager.chromedriver().browserInDocker()
-            .enableVnc().enableRecording();
 
     @BeforeAll
     static void setUpAll() {
         System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
+
     }
     @BeforeEach
     void setupTest() {
-        driver = wdm.create();
+        WebDriverManager.chromedriver().setup();
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--headless");
+        ChromeDriver driver = new ChromeDriver(options);
     }
 
     @AfterEach
     void teardown() {
-        wdm.quit();
+        driver.quit();
     }
 
     @Test
