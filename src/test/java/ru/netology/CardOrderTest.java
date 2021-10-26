@@ -20,6 +20,7 @@ public class CardOrderTest {
     }
     @BeforeEach
     void setupTest() {
+        driver = new ChromeDriver();
         WebDriverManager.chromedriver().setup();
 
         ChromeOptions options = new ChromeOptions();
@@ -32,11 +33,12 @@ public class CardOrderTest {
     @AfterEach
     void teardown() {
         driver.quit();
+        driver = null;
     }
 
     @Test
-    boolean test() {
+    void test() {
         // Your test logic here
-        return true;
+
     }
 }
