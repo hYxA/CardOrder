@@ -9,19 +9,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import static io.github.bonigarcia.wdm.WebDriverManager.*;
+
 public class CardOrderTest {
     private WebDriver driver;
 
 
     @BeforeAll
     static void setUpAll() {
-        System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
-
+//        System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
+        chromedriver().setup();
     }
+
     @BeforeEach
     void setupTest() {
         driver = new ChromeDriver();
-        WebDriverManager.chromedriver().setup();
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
