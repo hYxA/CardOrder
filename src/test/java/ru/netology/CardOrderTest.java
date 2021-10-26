@@ -13,16 +13,13 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.List;
 
-import static io.github.bonigarcia.wdm.WebDriverManager.*;
-
 public class CardOrderTest {
     private WebDriver driver;
 
 
     @BeforeAll
     static void setUpAll() {
-//        System.setProperty("webdriver.chrome.driver", "./driver/win/chromedriver.exe");
-        chromedriver().setup();
+        WebDriverManager.chromedriver().setup();
     }
 
     @BeforeEach
