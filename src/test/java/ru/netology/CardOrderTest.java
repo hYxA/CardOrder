@@ -50,23 +50,26 @@ public class CardOrderTest {
         textFields.get(1).sendKeys("+79012345678");
         driver.findElement(By.className("checkbox__box")).click();
         driver.findElement(By.tagName("button")).click();
-//        String input = driver.findElement(By.className("paragraph")).getText();
         String actualText = driver.findElement(By.className("paragraph")).getText();
         String expectedText = "&nbsp; Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
     }
-//
+
+    @Test
+    void shouldGetErrorByName() {
+        driver.get("http://localhost:9999");
+        List<WebElement> textFields = driver.findElements(By.className("input__control"));
+        textFields.get(0).sendKeys("Сыпунькай123");
+        textFields.get(1).sendKeys("+79012345678");
+        driver.findElement(By.className("checkbox__box")).click();
+        driver.findElement(By.tagName("button")).click();
+        List<WebElement> textFields2 = driver.findElements(By.className("input__sub"));
+
+        String actualText = textFields2.get(0)
+                .getText();
+        String expectedText = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
+    }
+
 //    @Test
-//    void shouldGet() {
-//        driver.get("http://localhost:9999");
-//        List<WebElement> textFields = driver.findElements(By.className("input__control"));
-//        textFields.get(0).sendKeys("Сыпунькай");
-//        textFields.get(1).sendKeys("+79012345678");
-//        driver.findElement(By.className("checkbox__box")).click();
-//        driver.findElement(By.tagName("button")).click();
-////        String input = driver.findElement(By.className("paragraph")).getText();
-//        String actualText = driver.findElement(By.className("paragraph")).getText();
-//        String expectedText = "&nbsp; Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
-//    }@Test
 //    void shouldEnterTruNameAndPhone() {
 //        driver.get("http://localhost:9999");
 //        List<WebElement> textFields = driver.findElements(By.className("input__control"));
