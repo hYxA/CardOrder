@@ -5,9 +5,13 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.util.List;
 
 import static io.github.bonigarcia.wdm.WebDriverManager.*;
 
@@ -39,8 +43,15 @@ public class CardOrderTest {
     }
 
     @Test
-    void test() {
-        // Your test logic here
-
+    void shouldEnterTruNameAndPhone() {
+        driver.get("http://localhost:9999");
+        List<WebElement> textFields = driver.findElements(By.className("input__control"));
+        textFields.get(0).sendKeys("Сыпунькай");
+        textFields.get(1).sendKeys("+79012345678");
+        driver.findElement(By.className("checkbox__box")).click();
+        driver.findElement(By.tagName("button")).click();
+//        String input = driver.findElement(By.className("paragraph")).getText();
+        String actualText = driver.findElement(By.className("paragraph")).getText();
+        String expectedText = "&nbsp; Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
     }
 }
