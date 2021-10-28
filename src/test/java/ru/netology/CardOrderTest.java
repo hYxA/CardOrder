@@ -63,6 +63,7 @@ public class CardOrderTest {
 
         String actualText = textFields2.get(0).getText();
         String expectedText = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
+
     }
 
     @Test
