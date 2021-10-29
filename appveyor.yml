@@ -6,8 +6,6 @@ branches:
   only:
     - master  # ветка git
 
-
-
 build: false  # будем использовать свой скрипт сборки
 
 install:

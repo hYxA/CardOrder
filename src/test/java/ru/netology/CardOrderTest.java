@@ -1,10 +1,7 @@
 package ru.netology;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -49,6 +46,8 @@ public class CardOrderTest {
         driver.findElement(By.tagName("button")).click();
         String actualText = driver.findElement(By.className("paragraph")).getText();
         String expectedText = "&nbsp; Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+
+        Assertions.assertEquals(expectedText, actualText);
     }
 
     @Test
@@ -64,6 +63,24 @@ public class CardOrderTest {
         String actualText = textFields2.get(0).getText();
         String expectedText = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
 
+        Assertions.assertEquals(expectedText, actualText);
+
+    }
+
+    @Test
+    void shouldGetErrorByNameWithCSS() {
+        driver.get("http://localhost:9999");
+        List<WebElement> textFields = driver.findElements(By.className("input__control"));
+        textFields.get(0).sendKeys("Сыпунькай123");
+        textFields.get(1).sendKeys("+79012345678");
+        driver.findElement(By.className("checkbox__box")).click();
+        driver.findElement(By.tagName("button")).click();
+
+        String actualText = driver.findElement(By.cssSelector("[type='input_invalid']")).getText();
+        String expectedText = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
+
+        Assertions.assertEquals(expectedText, actualText);
+
     }
 
     @Test
@@ -77,5 +94,7 @@ public class CardOrderTest {
         List<WebElement> textFields2 = driver.findElements(By.className("input__sub"));
         String actualText = textFields2.get(1).getText();
         String expectedText = "Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.";
+
+        Assertions.assertEquals(expectedText, actualText);
     }
 }
