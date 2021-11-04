@@ -21,8 +21,6 @@ public class CardOrderTest {
 
     @BeforeEach
     void setupTest() {
-        driver = new ChromeDriver();
-
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
@@ -89,7 +87,7 @@ public class CardOrderTest {
         driver.findElement(By.cssSelector("button")).click();
 
         String actualText = driver.findElement(By.cssSelector("[data-test-id=name].input_invalid .input__sub")).getText().trim();
-        String expectedText = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
+        String expectedText = "Поле обязательно для заполнения";
 
         Assertions.assertEquals(expectedText, actualText);
     }
@@ -101,8 +99,8 @@ public class CardOrderTest {
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button")).click();
 
-        String actualText = driver.findElement(By.cssSelector("[data-test-id=name].input_invalid .input__sub")).getText().trim();
-        String expectedText = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
+        String actualText = driver.findElement(By.cssSelector("[data-test-id=phone].input_invalid .input__sub")).getText().trim();
+        String expectedText = "Поле обязательно для заполнения";
 
         Assertions.assertEquals(expectedText, actualText);
     }
@@ -113,8 +111,8 @@ public class CardOrderTest {
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79009009900");
         driver.findElement(By.cssSelector("button")).click();
 
-        String actualText = driver.findElement(By.cssSelector("[data-test-id=name].input_invalid .input__sub")).getText().trim();
-        String expectedText = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
+        String actualText = driver.findElement(By.cssSelector("[data-test-id='agreement']")).getText().trim();
+        String expectedText = "Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй";
 
         Assertions.assertEquals(expectedText, actualText);
     }
