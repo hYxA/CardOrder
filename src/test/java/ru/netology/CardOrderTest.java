@@ -27,7 +27,7 @@ public class CardOrderTest {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
-        ChromeDriver driver = new ChromeDriver(options);
+        driver = new ChromeDriver(options);
         driver.get("http://localhost:9999");
     }
 
@@ -44,7 +44,7 @@ public class CardOrderTest {
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Сидоров Федор");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79009009900");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
-        driver.findElement(By.cssSelector("checkbox__box")).click();
+        driver.findElement(By.cssSelector("button")).click();
 
         String actualText = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText().trim();
         String expectedText = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
@@ -57,7 +57,7 @@ public class CardOrderTest {
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Сидоров Федор123");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79009009900");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
-        driver.findElement(By.cssSelector("checkbox__box")).click();
+        driver.findElement(By.cssSelector("button")).click();
 
         String actualText = driver.findElement(By.cssSelector("[data-test-id=name].input_invalid .input__sub")).getText().trim();
         String expectedText = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
@@ -86,7 +86,7 @@ public class CardOrderTest {
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79009009900");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
-        driver.findElement(By.cssSelector("checkbox__box")).click();
+        driver.findElement(By.cssSelector("button")).click();
 
         String actualText = driver.findElement(By.cssSelector("[data-test-id=name].input_invalid .input__sub")).getText().trim();
         String expectedText = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
@@ -99,7 +99,7 @@ public class CardOrderTest {
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Сидоров Федор");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
-        driver.findElement(By.cssSelector("checkbox__box")).click();
+        driver.findElement(By.cssSelector("button")).click();
 
         String actualText = driver.findElement(By.cssSelector("[data-test-id=name].input_invalid .input__sub")).getText().trim();
         String expectedText = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
@@ -111,7 +111,7 @@ public class CardOrderTest {
     void shouldGetErrorByEmptyCheckBox() {
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Сидоров Федор");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79009009900");
-        driver.findElement(By.cssSelector("checkbox__box")).click();
+        driver.findElement(By.cssSelector("button")).click();
 
         String actualText = driver.findElement(By.cssSelector("[data-test-id=name].input_invalid .input__sub")).getText().trim();
         String expectedText = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
